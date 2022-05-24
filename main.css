@@ -5,6 +5,10 @@
 .show {
     display: block;
 }
+.dark{
+    background: black;
+    color: white;
+}
 
 .black-bg {
     visibility: hidden;
