@@ -32,6 +32,14 @@
         <li class="list-group-item">And a fifth one</li>
     </ul>
 
+    <div class="main-bg">
+        <h4>Shirts on Sale</h4>
+        <button id="login" class="btn btn-danger">로그인</button>
+    </div>
+    <div class="alert-danger alert">
+        <span id="sec-count">5</span>초 이내 구매시 사은품 증정!
+    </div>
+
     <button id="popUp">로그인</button>
     <div class="black-bg">
         <div class="white-bg">
@@ -51,14 +59,31 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
-        </script>
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
     <script>
+        // console.log(secCount);
+        let secCount = $('#sec-count').text();
+
+        let timer = setInterval(() => {
+            secCount--;
+            console.log(secCount);
+            if(secCount >= 0) {
+                $('#sec-count').text(secCount);
+            } else {
+                $('.alert').css('display','none');
+                clearTimeout(timer);
+            }
+        }, 1000);
+
         let emailCode = document.getElementById('email').value;
         console.log(emailCode);
         $("form").on('submit', function () {
             if (emailCode == '') {
                 alert("채워라");
+            }
+            if(/[A-Z]+/.test(emailCode)){
+                alert('이메일 형식 아님');
             }
         })
 
@@ -96,8 +121,8 @@
 
     <script>
         let answerCount = 0;
-        
-        
+
+
 
         $('#send-answer').on('click', function () {
             answerCount++;
