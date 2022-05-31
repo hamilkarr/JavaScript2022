@@ -31,42 +31,56 @@
         <li class="list-group-item">And a fifth one</li>
     </ul>
 
+    <div class="main-bg" >
+        <h4>Shirts on Sale</h4>
+        <button id="login" class="btn btn-danger">로그인</button>
+    </div>
+
+    <div class="alert alert-danger">
+        5초 이내 구매시 사은품 증정!
+    </div>
+    <script>
+
+        setInterval(() => {
+            $('.alert').hide();
+        }, 1000);
+
+    </script>
+
+
     <button id="popUp">로그인</button>
     <div class="black-bg">
         <div class="white-bg">
             <h4>로그인하세요</h4>
             <form action="success.html">
                 <div class="my-3">
-                  <input type="text" class="form-control" id="email">
-                 </div>
-                 <div class="my-3">
-                   <input type="password" class="form-control">
-                 </div>
-                 <button type="submit" class="btn btn-primary">전송</button>
-                 <button type="button" class="btn btn-danger" id="close">닫기</button>
-              </form> 
-            <!-- <button class="btn btn-danger" id="close">닫기</button> -->
+                    <input type="text" class="form-control" id="email">
+                </div>
+                <div class="my-3">
+                    <input type="password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">전송</button>
+                <button type="button" class="btn btn-danger" id="close">닫기</button>
+            </form>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous">
-    </script>
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+        </script>
     <script>
         let emailCode = document.getElementById('email').value;
         console.log(emailCode);
-        $("form").on('submit',function () {
-            if(emailCode == ''){
+        $("form").on('submit', function () {
+            if (emailCode == '') {
                 alert("채워라");
             }
         })
-    </script>
-    <script>
+
         document.querySelector('.navbar-toggler').addEventListener('click', function toggleNav(params) {
             document.querySelector('.list-group').classList.toggle('show');
         });
-        $('#popUp').on('click',function () {
+        $('#popUp').on('click', function () {
             $('.black-bg').addClass('show-modal');
         });
     </script>
