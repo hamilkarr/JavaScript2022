@@ -17,6 +17,7 @@
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <span class="navbar-brand">Navbar</span>
+            <span class="badge bg-dark">Dark ?Ÿ”?</span>
             <button class="navbar-toggler" type="button">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,27 +32,18 @@
         <li class="list-group-item">And a fifth one</li>
     </ul>
 
-    <div class="main-bg" >
+    <div class="main-bg">
         <h4>Shirts on Sale</h4>
-        <button id="login" class="btn btn-danger">ë¡œê·¸ì¸</button>
+        <button id="login" class="btn btn-danger">ë¡œê·¸?¸</button>
+    </div>
+    <div class="alert-danger alert">
+        <span id="sec-count">5</span>ì´? ?´?‚´ êµ¬ë§¤?‹œ ?‚¬????’ˆ ì¦ì •!
     </div>
 
-    <div class="alert alert-danger">
-        5ì´ˆ ì´ë‚´ êµ¬ë§¤ì‹œ ì‚¬ì€í’ˆ ì¦ì •!
-    </div>
-    <script>
-
-        setInterval(() => {
-            $('.alert').hide();
-        }, 1000);
-
-    </script>
-
-
-    <button id="popUp">ë¡œê·¸ì¸</button>
+    <button id="popUp">ë¡œê·¸?¸</button>
     <div class="black-bg">
         <div class="white-bg">
-            <h4>ë¡œê·¸ì¸í•˜ì„¸ìš”</h4>
+            <h4>ë¡œê·¸?¸?•˜?„¸?š”</h4>
             <form action="success.html">
                 <div class="my-3">
                     <input type="text" class="form-control" id="email">
@@ -59,21 +51,60 @@
                 <div class="my-3">
                     <input type="password" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-primary">ì „ì†¡</button>
-                <button type="button" class="btn btn-danger" id="close">ë‹«ê¸°</button>
+                <button type="submit" class="btn btn-primary">? „?†¡</button>
+                <button type="button" class="btn btn-danger" id="close">?‹«ê¸?</button>
             </form>
+            <!-- <button class="btn btn-danger" id="close">?‹«ê¸?</button> -->
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
-        </script>
+    <div style="overflow: hidden;">
+        <div class="slide-container">
+            <div class="slide-box"><img style="background-color: blue;" src="" alt=""></div>
+            <div class="slide-box"><img style="background-color: aqua;" src="" alt=""></div>
+            <div class="slide-box"><img style="background-color: blueviolet;" src="" alt=""></div>
+        </div>
+    </div>
+
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+
     <script>
+        $('.slide-1').on('click',function () {
+            $('.slide-container').css('transform','translateX(0vw)');
+        });
+        $('.slide-2').on('click',function () {
+            $('.slide-container').css('transform','translateX(-100vw)');
+        });
+        $('.slide-3').on('click',function () {
+            $('.slide-container').css('transform','translateX(-200vw)');
+        })
+    </script>
+
+    <script>
+        // console.log(secCount);
+        let secCount = $('#sec-count').text();
+
+        let timer = setInterval(() => {
+            secCount--;
+            console.log(secCount);
+            if(secCount >= 0) {
+                $('#sec-count').text(secCount);
+            } else {
+                $('.alert').css('display','none');
+                clearTimeout(timer);
+            }
+        }, 1000);
+
         let emailCode = document.getElementById('email').value;
         console.log(emailCode);
         $("form").on('submit', function () {
             if (emailCode == '') {
-                alert("ì±„ì›Œë¼");
+                alert("ì±„ì›Œ?¼");
+            }
+            if(/[A-Z]+/.test(emailCode)){
+                alert('?´ë©”ì¼ ?˜•?‹ ?•„?‹˜');
             }
         })
 
@@ -83,6 +114,48 @@
         $('#popUp').on('click', function () {
             $('.black-bg').addClass('show-modal');
         });
+
+        let count = 0;
+        $('.badge').on('click', function () {
+            count++;
+
+            if (count % 2 == 1) {
+                $('.badge').html('Light ?Ÿ”?');
+            } else {
+                $('.badge').html('Dark ?Ÿ”?');
+            }
+        });
+
+        let first = 360;
+
+        first += first * 2 / 3;
+        first += first * 2 / 3;
+
+        //console.log(first);
+
+
+    </script>
+
+    <p>?ƒœì¡? ?´?„±ê³„ê?? ?ƒœ?–´?‚œ ?…„?„?Š”?</p>
+    <input type="text" id="answer">
+    <button id="send-answer">? œì¶?</button>
+
+    <script>
+        let answerCount = 0;
+
+
+
+        $('#send-answer').on('click', function () {
+            answerCount++;
+            let report = $('#answer').val();
+            console.log(report);
+            if (report == '1335') {
+                alert('?„±ê³?');
+            } else if (answerCount >= 3 && report != '1335') {
+                alert('ë©ì²­?´');
+            }
+        });
+
     </script>
 </body>
 

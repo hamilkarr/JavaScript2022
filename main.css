@@ -5,6 +5,10 @@
 .show {
     display: block;
 }
+.dark{
+    background: black;
+    color: white;
+}
 
 .black-bg {
     visibility: hidden;
@@ -26,4 +30,19 @@
     background: white;
     border-radius: 5px;
     padding: 30px;
+}
+.slide-container{
+    /* transform: translateX(-100vw); */
+    transition: all 1s;
+    width: 300vw;
+    display: inline-flex;
+}
+
+.slide-box{
+    width: 100vw;
+}
+
+.slide-box > img {
+    width: 100%;
+    height: 100px;
 }
