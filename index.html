@@ -32,7 +32,7 @@
         <li class="list-group-item">And a fifth one</li>
     </ul>
 
-    <div class="main-bg">
+    <div class="main-bg" >
         <h4>Shirts on Sale</h4>
         <button id="login" class="btn btn-danger">로그인</button>
     </div>
@@ -58,6 +58,8 @@
         </div>
     </div>
 
+    <br>
+
     <div style="overflow: hidden;">
         <div class="slide-container">
             <div class="slide-box"><img style="background-color: blue;" src="" alt=""></div>
@@ -69,94 +71,110 @@
     <button class="slide-1">1</button>
     <button class="slide-2">2</button>
     <button class="slide-3">3</button>
+    <button class="next">다음</button>    
+
+    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique quis nulla nemo omnis eum! Vel sequi facere sint veritatis reprehenderit error quos mollitia perspiciatis, consectetur quas rem explicabo, tenetur qui.</div>
+
+    <div style="height: 1000px;"></div>
+    <script>
+        let alertCall = false;
+        $('.lorem').on('scroll',function(){
+            let a = document.querySelector('.lorem').scrollTop;
+            let b = document.querySelector('.lorem').scrollHeight;
+            let c = document.querySelector('.lorem').clientHeight;
+            
+            if((a >= (b-c-10)) && !alertCall){
+                alert('reading Done!');
+                alertCall = true;
+                
+            }
+            
+        })
+    </script>
 
     <script>
-        $('.slide-1').on('click',function () {
-            $('.slide-container').css('transform','translateX(0vw)');
+
+
+        $('.slide-1').on('click', function () {
+            $('.slide-container').css('transform', 'translateX(0vw)');
         });
-        $('.slide-2').on('click',function () {
-            $('.slide-container').css('transform','translateX(-100vw)');
+        $('.slide-2').on('click', function () {
+            $('.slide-container').css('transform', 'translateX(-100vw)');
         });
-        $('.slide-3').on('click',function () {
-            $('.slide-container').css('transform','translateX(-200vw)');
+        $('.slide-3').on('click', function () {
+            $('.slide-container').css('transform', 'translateX(-200vw)');
+        });
+
+        let nowPhoto = 1;
+        let nowPhotoMove = (-100 * nowPhoto) + 'vw';
+        
+        $('.next').on('click', function () {
+            $('.slide-container').css('transform', 'translateX(-' + nowPhoto + '00vw)');
+            nowPhoto += 1;
+            if(nowPhoto >= 2) {
+                return;
+            }
+            // return nowPhoto;
+            console.log(nowPhoto);
+            console.log(nowPhotoMove);
         })
     </script>
 
     <script>
         // console.log(secCount);
-        let secCount = $('#sec-count').text();
+        // let secCount = $('#sec-count').text();
 
-        let timer = setInterval(() => {
-            secCount--;
-            console.log(secCount);
-            if(secCount >= 0) {
-                $('#sec-count').text(secCount);
-            } else {
-                $('.alert').css('display','none');
-                clearTimeout(timer);
-            }
-        }, 1000);
+        // let timer = setInterval(() => {
+        //     secCount--;
+        //     console.log(secCount);
+        //     if (secCount >= 0) {
+        //         $('#sec-count').text(secCount);
+        //     } else {
+        //         $('.alert').css('display', 'none');
+        //         clearTimeout(timer);
+        //     }
+        // }, 1000);
 
-        let emailCode = document.getElementById('email').value;
-        console.log(emailCode);
-        $("form").on('submit', function () {
-            if (emailCode == '') {
-                alert("채워라");
-            }
-            if(/[A-Z]+/.test(emailCode)){
-                alert('이메일 형식 아님');
-            }
-        })
+        // let emailCode = document.getElementById('email').value;
+        // console.log(emailCode);
+        // $("form").on('submit', function () {
+        //     if (emailCode == '') {
+        //         alert("채워라");
+        //     }
+        //     if (/[A-Z]+/.test(emailCode)) {
+        //         alert('이메일 형식 아님');
+        //     }
+        // })
 
-        document.querySelector('.navbar-toggler').addEventListener('click', function toggleNav(params) {
-            document.querySelector('.list-group').classList.toggle('show');
-        });
+        // document.querySelector('.navbar-toggler').addEventListener('click', function toggleNav(params) {
+        //     document.querySelector('.list-group').classList.toggle('show');
+        // });
         $('#popUp').on('click', function () {
             $('.black-bg').addClass('show-modal');
         });
 
-        let count = 0;
-        $('.badge').on('click', function () {
-            count++;
+        // let count = 0;
+        // $('.badge').on('click', function () {
+        //     count++;
 
-            if (count % 2 == 1) {
-                $('.badge').html('Light 🔄');
-            } else {
-                $('.badge').html('Dark 🔄');
-            }
-        });
+        //     if (count % 2 == 1) {
+        //         $('.badge').html('Light 🔄');
+        //     } else {
+        //         $('.badge').html('Dark 🔄');
+        //     }
+        // });
 
-        let first = 360;
+        // let first = 360;
 
-        first += first * 2 / 3;
-        first += first * 2 / 3;
+        // first += first * 2 / 3;
+        // first += first * 2 / 3;
 
         //console.log(first);
 
 
     </script>
 
-    <p>태조 이성계가 태어난 년도는?</p>
-    <input type="text" id="answer">
-    <button id="send-answer">제출</button>
 
-    <script>
-        let answerCount = 0;
-
-
-
-        $('#send-answer').on('click', function () {
-            answerCount++;
-            let report = $('#answer').val();
-            console.log(report);
-            if (report == '1335') {
-                alert('성공');
-            } else if (answerCount >= 3 && report != '1335') {
-                alert('멍청이');
-            }
-        });
-
-    </script>
 </body>
 
 </html>

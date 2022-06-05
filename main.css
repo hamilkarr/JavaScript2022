@@ -1,7 +1,15 @@
 .list-group {
     display: none;
 }
-
+.navbar{
+    position:fixed ;
+    width: 100%;
+    display: none;
+    /* z-index: 1; */
+}
+.navbar-brand{
+    font-size : 30px;
+}
 .show {
     display: block;
 }
