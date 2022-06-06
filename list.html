@@ -56,10 +56,18 @@
                         <img src="https://via.placeholder.com/600" class="w-100">
                         <h5>${goods.title}</h5>
                         <p>${goods.price}</p>
+                        <button class='buy'>구매</button>
                     </div>`
                 )
             });
         }
+
+        localStorage.setItem('이름','kim');
+        let arr2 = [1,2,3];
+        let arr3 = JSON.stringify(arr2);
+        localStorage.setItem('num', arr3);
+        let 꺼낸거 = localStorage.getItem('num');
+        
 
         $("#title").click(() => {
             products.sort(function (a, b) {
