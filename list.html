@@ -56,18 +56,11 @@
                         <img src="https://via.placeholder.com/600" class="w-100">
                         <h5>${goods.title}</h5>
                         <p>${goods.price}</p>
-                        <button class='buy'>구매</button>
+                        <button class='buy' style='margin-bottom: 10px;'>구매</button>
                     </div>`
                 )
             });
         }
-
-        localStorage.setItem('이름','kim');
-        let arr2 = [1,2,3];
-        let arr3 = JSON.stringify(arr2);
-        localStorage.setItem('num', arr3);
-        let 꺼낸거 = localStorage.getItem('num');
-        
 
         $("#title").click(() => {
             products.sort(function (a, b) {
@@ -99,9 +92,7 @@
             $(".row").html('');
             listHtml(underProducts);
         })
-
-
-
+        
         /*
         // 숫자 정렬
         let testArray = [1, 23, 5432, 4, 123];
@@ -115,9 +106,26 @@
         console.log(testArray);
         */
 
-
+        /*
+        localStorage.setItem('이름','kim');
+        let arr2 = [1,2,3];
+        let arr3 = JSON.stringify(arr2);
+        localStorage.setItem('num', arr3);
+        let 꺼낸거 = localStorage.getItem('num');
+        */
 
         listHtml(products);
+
+        $(".row .buy").click(function(e){
+            
+            let test = $(this).prevAll("h5").text();
+            let cartArr = [test];
+            
+            
+            //localStorage.setItem('cart')
+            //console.log(test);
+        })
+
 
         let moreButtonCount = 0;
 
