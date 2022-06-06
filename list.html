@@ -14,31 +14,19 @@
 </head>
 
 <body>
-    <div class="card-group container">
-        <div class="card">
-            <img src="https://via.placeholder.com/600">
-            <div class="card-body">
+    <div class="container">
+        <div class="row">
+
+            <!-- <div class="col-sm-4">
+                <img src="https://via.placeholder.com/600" class="w-100">
                 <h5>Card title</h5>
                 <p>가격 : 70000</p>
-                <button class="btn btn-danger">주문하기</button>
-            </div>
+            </div> -->
+
         </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/600">
-            <div class="card-body">
-                <h5>Card title</h5>
-                <p>가격 : 70000</p>
-                <button class="btn btn-danger">주문하기</button>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/600">
-            <div class="card-body">
-                <h5>Card title</h5>
-                <p>가격 : 70000</p>
-                <button class="btn btn-danger">주문하기</button>
-            </div>
-        </div>
+    </div>
+    <div class="container">
+        <button id="more" class="btn btn-danger">더보기</button>
     </div>
 
     <script>
@@ -47,11 +35,61 @@
             { id: 1, price: 50000, title: 'Springfield Shirt' },
             { id: 2, price: 60000, title: 'Black Monastery' }
         ];
-        console.log($('.card').length);
-        for(i=0; i<$('.card').length; i++){            
-            $(".card-body h5").eq(i).text(products[i]['title']);
-            $(".card-body p").eq(i).text('가격: ' + products[i]['price'] + '원');
+
+        function listHtml(array) {
+            array.forEach(function (goods, i) {
+                $(".row").append(
+                    `<div class="col-sm-4">
+                    <img src="https://via.placeholder.com/600" class="w-100">
+                    <h5>${goods.title}</h5>
+                    <p>${goods.price}</p>
+                </div>`
+                )
+            });
         }
+
+        listHtml(products);
+
+        let moreButtonCount = 0;
+
+        $(".btn").on("click", function () {
+            if (moreButtonCount == 0) {
+                $.get("https://codingapple1.github.io/js/more1.json")
+                    .done(function (data) {
+                        // console.log(data);
+                        /*
+                        data.forEach(function (goods, i) {
+                            $(".row").append(
+                                `<div class="col-sm-4">
+                                    <img src="https://via.placeholder.com/600" class="w-100">
+                                    <h5>${goods.title}</h5>
+                                    <p>${goods.price}</p>
+                                </div>`
+                            )
+                        });
+                        */
+                        listHtml(data);
+                        moreButtonCount = 1;
+                        return moreButtonCount;
+                    })
+                    .fail(function () {
+                        console.log("실패함");
+                    });
+            } else if(moreButtonCount == 1){
+                $.get("https://codingapple1.github.io/js/more2.json")
+                    .done(function (data) {
+                        listHtml(data)
+                        moreButtonCount++;
+                        return moreButtonCount;
+                    })
+                    .fail(() => {
+                        console.log("실패함222");
+                    })
+            } else {
+                $("#more").css("display","none");
+            }
+        });
+
     </script>
 </body>
 
