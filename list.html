@@ -29,7 +29,7 @@
     <div class="container my-3">
         <button class="btn btn-danger" id="price">가격순정렬</button>
     </div>
-    
+
     <div class="container my-3">
         <button class="btn btn-danger" id="title">다나가순정렬</button>
     </div>
@@ -64,7 +64,7 @@
 
         $("#title").click(() => {
             products.sort(function (a, b) {
-                if(a.title < b.title){
+                if (a.title < b.title) {
                     return 1
                 } else {
                     return -1
@@ -92,7 +92,7 @@
             $(".row").html('');
             listHtml(underProducts);
         })
-        
+
         /*
         // 숫자 정렬
         let testArray = [1, 23, 5432, 4, 123];
@@ -116,15 +116,7 @@
 
         listHtml(products);
 
-        $(".row .buy").click(function(e){
-            
-            let test = $(this).prevAll("h5").text();
-            let cartArr = [test];
-            
-            
-            //localStorage.setItem('cart')
-            //console.log(test);
-        })
+
 
 
         let moreButtonCount = 0;
@@ -155,6 +147,17 @@
             }
         });
 
+        $(".buy").click(function (e) {
+            let title = $(e.target).siblings('h5').text();
+
+            if (localStorage.getItem('cart') != null)  {
+                let record =JSON.parse(localStorage.getItem('cart'))
+                record.push(title);
+                localStorage.setItem('cart',JSON.stringify(record));
+            } else {
+                localStorage.setItem('cart', JSON.stringify([title]));
+            }
+        })
     </script>
 </body>
 
