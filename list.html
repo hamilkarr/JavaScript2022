@@ -147,7 +147,9 @@
             }
         });
 
-        $(".buy").click(function (e) {
+
+        // document를 다시 불러와야, 제이쿼리로 생성한 html 요소들을 인식할 수 있나보다...
+        $(document).on("click",".buy",function (e) {
             let title = $(e.target).siblings('h5').text();
 
             if (localStorage.getItem('cart') != null)  {
@@ -157,7 +159,7 @@
             } else {
                 localStorage.setItem('cart', JSON.stringify([title]));
             }
-        })
+        });
     </script>
 </body>
 
